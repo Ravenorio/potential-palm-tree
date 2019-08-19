@@ -1,0 +1,26 @@
+local player = game.Players.LocalPlayer
+local human = player.Character
+local root = human.HumanoidRootPart
+local head = human["Head"]
+
+local vector = Vector3.new(-2, 2, 4)
+
+local top = Instance.new("Part", human)
+top.CFrame = CFrame.new(1,2,3)
+wait(0.5)
+
+
+local gyro = Instance.new("BodyGyro", top)
+local bodyposition = Instance.new("BodyPosition", top)
+
+gyro.MaxTorque = Vector3.new(1000000,1000000,1000000)
+bodyposition.MaxForce = Vector3.new(1000000,1000000,1000000)
+
+
+
+while true do
+	local p = head.CFrame * Vector3.new(2,2,2)
+	top.BodyGyro.CFrame = head.CFrame
+	top.BodyPosition.Position = Vector3.new(p.x,p.y,p.z)
+	wait()
+end
